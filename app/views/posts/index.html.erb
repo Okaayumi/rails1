@@ -1,23 +1,53 @@
-<header>
-  <div class="header-logo">
-    <a href="/">TweetApp</a>
-  </div>
-  <ul class="header-menus">
-    <li>
-      <a href="/about">TweetAppとは</a>
-    </li>
-  </ul>
-</header>
-<% post1="今日からprogateでRailsの勉強するよー!" %>
-<% post2="投稿一覧ページ作成中！"%>
+<div class ="container">
+    <header>
+    <div class="pagetitle">
+        <p>予定一覧</p>
+        <button class="btn_new"><%=link_to "新規追加",:new_post %></button>
+    </div>
+    </header>
 
-<div class="main posts-index">
-  <div class="container">
-    <div class="posts-index-item">
-      <%= post1 %>
-    </div>
-    <div class="posts-index-item">
-      <%= post2%>
-    </div>
-  </div>
+    <table border="1">
+    <thead>
+        <tr>
+        <th>ID</th>
+        <th>タイトル</th>
+        <th>開始日</th>
+        <th>終了日</th>
+        <th>終日</th>
+        <th>更新日時</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <% @posts.each do |post| %>
+        <tr>
+            <td><%= post.id %></td>
+            <td><%= post.title %></td>
+            <td><%= post.start.to_date.strftime('%Y/%m/%d')%></td>
+            <td><%= post.finish.to_date.strftime('%Y/%m/%d') %></td>
+            <td>
+              <% if post.allday == true %>
+              ○
+              <% else post.allday == false %>
+              <% end %>
+            </td>
+
+            <td><%= post.updated_at.to_s(:datetime_jp) %></td>
+        </tr>
+        <% end %>
+    </tbody>
+    
+
+    </table>
+
+    <table>
+    <tfoot>
+        <div class="under">
+            <P>予定合計 <%= @count%>件</p>
+            <p><%= @date1 %></P>
+        </div>
+    </tfoot>
+    </table>
 </div>
+
+
