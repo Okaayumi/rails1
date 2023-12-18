@@ -15,6 +15,7 @@
         <th>終了日</th>
         <th>終日</th>
         <th>更新日時</th>
+        
         </tr>
     </thead>
 
@@ -23,8 +24,8 @@
         <tr>
             <td><%= post.id %></td>
             <td><%= post.title %></td>
-            <td><%= post.start.to_date.strftime('%Y/%m/%d')%></td>
-            <td><%= post.finish.to_date.strftime('%Y/%m/%d') %></td>
+            <td><%= post&.start&.to_date&.strftime('%Y/%m/%d') %></td>
+            <td><%= post&.finish&.to_date&.strftime('%Y/%m/%d') %></td>
             <td>
               <% if post.allday == true %>
               ○
@@ -32,7 +33,12 @@
               <% end %>
             </td>
 
-            <td><%= post.updated_at.to_s(:datetime_jp) %></td>
+            <td>
+              <%= post.updated_at.to_s(:datetime_jp) %>
+            </td>
+            <td>
+              <%= link_to "詳細",post%>
+            </td>
         </tr>
         <% end %>
     </tbody>

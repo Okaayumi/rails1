@@ -1,0 +1,42 @@
+<div class="container">
+    
+  <div class="back_show">
+     <%= link_to "←一覧に戻る", :posts %>
+  </div>
+
+  <div class="pagetitle">
+    <h2><%=@post.title%></h2>
+    
+    <button class="btn_new"><%=link_to "編集",:edit_post %></button>
+    
+  </div>
+
+  <table border="1">
+    <tr>
+      <th>開始日</th>
+      <td><%= @post.start&.to_date&.strftime('%Y/%m/%d') %>
+    </tr> 
+
+    <tr>
+      <th>終了日</th>
+      <td><%= @post.finish&.to_date&.strftime('%Y/%m/%d') %>
+    </tr> 
+
+    <tr>
+      <th>終日</th>
+      <td>
+        <% if @post.allday == true %>
+        ○
+        <% else @post.allday == false %>
+        <% end %>
+      </td>
+    </tr>
+
+    <tr>
+      <th>スケジュールメモ</th>
+      <td><%= @post.note %></td>
+    </tr>
+  </table>
+</div>
+
+ 

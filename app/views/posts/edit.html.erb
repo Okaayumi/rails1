@@ -1,7 +1,7 @@
-<div class="container">
-    <h3>予定の新規追加</h3>
+<div class="container">  
+  <h3>予定を編集してください</h3>
 
-    <%= form_with model:@post do |f|%>
+  <%= form_with model:@post do |f|%>
     <table>
       <tr>
         <th><%=f.label :title,"タイトル"%></th>
@@ -11,7 +11,8 @@
       <tr>
         <th><%=f.label :start,"開始日"%></th>
           <td><%=f.date_field:start%></td>
-      </th>
+        </th>
+      </tr>
 
       <tr>
         <th><%=f.label :finish,"終了日"%></th>
@@ -43,5 +44,3 @@
     <% end %>
 
 </div>
-
-
